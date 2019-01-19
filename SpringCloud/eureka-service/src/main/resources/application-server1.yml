@@ -1,0 +1,20 @@
+server:
+  port: 8001
+
+eureka:
+  instance:
+    hostname: server1
+    # 超过这个时间没收到心跳就剔除这个服务，这个配置一般为服务刷新时间配置的三倍，默认90s
+    lease-expiration-duration-in-seconds: 15
+    # 服务刷新时间，默认30s
+    lease-renewal-interval-in-seconds: 5
+  client:
+    service-url:
+      defaultZone: http://server1:8001/eureka/,http://server2:8002/eureka/,http://server3:8003/eureka/
+    # eureka client 刷新本地缓存时间，默认30s
+    registry-fetch-interval-seconds: 5
+  server:
+    # eureka server 刷新 readCacheMap 的时间，client 读取的是 readCacheMap，默认30s
+    response-cache-update-interval-ms: 3000
+    # 服务下线任务定时，默认60s
+    eviction-interval-timer-in-ms: 3000
