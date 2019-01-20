@@ -22,17 +22,19 @@ namespace ClientService1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IBaseService, BaseService>();
-
+            // 服务发现客户端
             services.AddDiscoveryClient(Configuration);
+
             services.AddTransient<DiscoveryHttpMessageHandler>();
 
+            // 指定 BaseService 内使用的 HttpClient 在发送请求前通过 DiscoveryHttpMessageHandler 解析 BaseAddress 为已注册服务的 host:port
             services.AddHttpClient("base-service", c =>
             {
                 c.BaseAddress = new Uri(Configuration["services:base-service:url"]);
             })
             .AddHttpMessageHandler<DiscoveryHttpMessageHandler>()
             .AddTypedClient<IBaseService, BaseService>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

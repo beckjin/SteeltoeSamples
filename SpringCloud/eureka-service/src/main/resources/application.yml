@@ -1,5 +1,7 @@
 spring:
   application:
+    # 服务名
     name: eureka-service
   profiles:
+    # 默认使用 server1 配置
     active: server1
