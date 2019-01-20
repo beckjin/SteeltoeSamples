@@ -1,14 +1,15 @@
-﻿using ClientService1.Services;
+﻿using ClientHystrixService1.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Steeltoe.CircuitBreaker.Hystrix;
 using Steeltoe.Common.Http.Discovery;
 using Steeltoe.Discovery.Client;
 using System;
 
-namespace ClientService1
+namespace ClientHystrixService1
 {
     public class Startup
     {
@@ -35,6 +36,12 @@ namespace ClientService1
             .AddHttpMessageHandler<DiscoveryHttpMessageHandler>()
             .AddTypedClient<IBaseService, BaseService>();
 
+            // Add Steeltoe Hystrix Command
+            services.AddHystrixCommand<BaseServiceCommand>("base-service", Configuration);
+
+            // Add Hystrix Metrics to container
+            services.AddHystrixMetricsStream(Configuration);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -47,7 +54,10 @@ namespace ClientService1
             }
 
             app.UseMvc();
+            // Add Steeltoe Discovery Client service
             app.UseDiscoveryClient();
+            // Start Hystrix metrics stream service
+            app.UseHystrixMetricsStream();
         }
     }
 }
