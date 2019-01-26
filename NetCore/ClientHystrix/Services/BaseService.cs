@@ -1,7 +1,8 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace ClientHystrixService1.Services
+namespace ClientHystrix.Services
 {
     public class BaseService : IBaseService
     {
@@ -15,6 +16,12 @@ namespace ClientHystrixService1.Services
         {
             var result = await _httpClient.GetStringAsync("api/values");
             return result;
+        }
+
+        public async Task<List<string>> GetValuesAsync()
+        {
+            var result = await _httpClient.GetStringAsync("api/values");
+            return new List<string> { result };
         }
     }
 }

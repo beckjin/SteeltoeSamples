@@ -1,8 +1,8 @@
-﻿using ClientService1.Services;
+﻿using ClientZuul.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace ClientService1.Controllers
+namespace ClientZuul.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

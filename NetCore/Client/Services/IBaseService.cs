@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ClientService1.Services
+namespace Client.Services
 {
     public interface IBaseService
     {

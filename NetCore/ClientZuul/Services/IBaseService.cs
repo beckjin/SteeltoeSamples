@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ClientHystrixService1.Services
+namespace ClientZuul.Services
 {
     public interface IBaseService
     {

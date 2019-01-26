@@ -1,13 +1,13 @@
 ﻿using Steeltoe.CircuitBreaker.Hystrix;
 using System.Threading.Tasks;
 
-namespace ClientHystrixService1.Services
+namespace ClientHystrix.Services.Commands
 {
-    public class BaseServiceCommand : HystrixCommand<string>
+    public class GetValueCommand : HystrixCommand<string>
     {
         private readonly IBaseService _baseService;
 
-        public BaseServiceCommand(IHystrixCommandOptions options, 
+        public GetValueCommand(IHystrixCommandOptions options,
             IBaseService baseService) : base(options)
         {
             _baseService = baseService;
@@ -27,7 +27,7 @@ namespace ClientHystrixService1.Services
 
         protected override async Task<string> RunFallbackAsync()
         {
-            return await Task.FromResult("Sorry, the service is unavaliable now. Please try again later.");
+            return await Task.FromResult("调用 GetValueAsync 接口异常，服务异常，请稍候再试");
         }
     }
 }

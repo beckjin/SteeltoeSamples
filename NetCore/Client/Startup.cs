@@ -1,4 +1,4 @@
-﻿using ClientService1.Services;
+﻿using Client.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using Steeltoe.Common.Http.Discovery;
 using Steeltoe.Discovery.Client;
 using System;
 
-namespace ClientService1
+namespace Client
 {
     public class Startup
     {

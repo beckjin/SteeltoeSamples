@@ -4,7 +4,7 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:37697",
+      "applicationUrl": "http://localhost:57486",
       "sslPort": 0
     }
   },
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ClientHystrixService1": {
+    "ClientZuul": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

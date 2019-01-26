@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
-namespace ClientHystrixService1
+namespace ClientHystrix
 {
     public class Program
     {
@@ -19,7 +12,7 @@ namespace ClientHystrixService1
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://*:7001")
+                .UseUrls("http://*:6003")
                 .UseStartup<Startup>();
     }
 }

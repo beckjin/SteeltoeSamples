@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ClientService1
+namespace ClientZuul
 {
     public class Program
     {
@@ -11,8 +11,8 @@ namespace ClientService1
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://*:6001")
-                .UseStartup<Startup>();
+        WebHost.CreateDefaultBuilder(args)
+            .UseUrls("http://*:6002")
+            .UseStartup<Startup>();
     }
 }
