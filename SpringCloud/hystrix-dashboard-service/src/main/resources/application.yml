@@ -8,10 +8,6 @@ server:
 eureka:
   instance:
     hostname: server1
-    # 超过这个时间没收到心跳就剔除这个服务，这个配置一般为服务刷新时间配置的三倍，默认90s
-    lease-expiration-duration-in-seconds: 15
-    # 服务刷新时间，默认30s
-    lease-renewal-interval-in-seconds: 5
   client:
     service-url:
       defaultZone: http://server1:8001/eureka/,http://server2:8002/eureka/,http://server3:8003/eureka/

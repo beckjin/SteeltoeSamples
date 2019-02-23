@@ -12,7 +12,6 @@ namespace ClientHystrix.Services.Commands
             IBaseService baseService) : base(options)
         {
             _baseService = baseService;
-            IsFallbackUserDefined = true;
         }
 
         public async Task<List<string>> GetValuesAsync()
@@ -22,8 +21,7 @@ namespace ClientHystrix.Services.Commands
 
         protected override async Task<List<string>> RunAsync()
         {
-            var result = await _baseService.GetValuesAsync();
-            return result;
+            return await _baseService.GetValuesAsync();
         }
         protected override async Task<List<string>> RunFallbackAsync()
         {

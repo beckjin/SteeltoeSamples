@@ -11,7 +11,6 @@ namespace ClientHystrix.Services.Commands
             IBaseService baseService) : base(options)
         {
             _baseService = baseService;
-            IsFallbackUserDefined = true;
         }
 
         public async Task<string> GetValueAsync()
@@ -21,10 +20,13 @@ namespace ClientHystrix.Services.Commands
 
         protected override async Task<string> RunAsync()
         {
-            var result = await _baseService.GetValueAsync();
-            return result;
+            return await _baseService.GetValueAsync();
         }
 
+        /// <summary>
+        /// 熔断降级执行方法
+        /// </summary>
+        /// <returns></returns>
         protected override async Task<string> RunFallbackAsync()
         {
             return await Task.FromResult("调用 GetValueAsync 接口异常，服务异常，请稍候再试");
